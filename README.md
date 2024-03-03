@@ -33,12 +33,9 @@ activity as a means of monitoring, the app offers a proactive approach to ensuri
 timely intervention in case of emergencies or prolonged periods of inactivity. This innovative solution not only
 provides reassurance to users but also promotes a greater sense of security and connectedness within communities.  
 
-<<<<<<< HEAD
 ## Project Guide
 Fameela K A
 
-=======
->>>>>>> 8bcc54c270184b49e5e94c95775d91211b6855e0
 ## Team Members
 - Sai Anand K
 - Shiva Surendran
