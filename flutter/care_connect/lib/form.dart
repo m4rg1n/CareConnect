@@ -44,6 +44,10 @@ class _MyAppState extends State<MyApp> {
                 SizedBox(
                   height: 20,
                 ),
+                Text("Enter Details of Beneficary", style: TextStyle(fontSize: 18,fontWeight:FontWeight.bold),),
+                SizedBox(
+                  height: 20,
+                ),
                 TextFormField(
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     decoration: InputDecoration(
