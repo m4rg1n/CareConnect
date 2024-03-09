@@ -1,14 +1,11 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatefulWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -20,7 +17,7 @@ class _MyAppState extends State<MyApp> {
   void _submitform() {
     if (_formKey.currentState!.validate()) {
       ScaffoldMessenger.of(_formKey.currentContext!)
-          .showSnackBar(const SnackBar(content: Text("success")));
+          .showSnackBar(const SnackBar(content: Text("Success")));
     }
   }
 
@@ -29,7 +26,6 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        resizeToAvoidBottomInset: false,
         backgroundColor: const Color.fromARGB(255, 248, 248, 248),
         appBar: AppBar(
           title: Text('Beneficiary Details'),
@@ -37,99 +33,123 @@ class _MyAppState extends State<MyApp> {
         ),
         body: Padding(
           padding: const EdgeInsets.all(12.0),
-          child: Form(
-            key: _formKey,
-            child: Column(
-              children: [
-                SizedBox(
-                  height: 20,
-                ),
-                Text("Enter Details of Beneficary", style: TextStyle(fontSize: 18,fontWeight:FontWeight.bold),),
-                SizedBox(
-                  height: 20,
-                ),
-                TextFormField(
+          child: SingleChildScrollView(
+            child: Form(
+              key: _formKey,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Text(
+                    "Enter Details of Beneficiary",
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  TextFormField(
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     decoration: InputDecoration(
-                        labelText: "Enter Name of beneficiary",
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10))),
+                      labelText: "Name of Beneficiary",
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
                     validator: (value) {
                       if (value!.isEmpty) {
-                        return "enter";
+                        return "Please enter a valid name";
                       }
                       return null;
-                    }),
-                SizedBox(
-                  height: 20,
-                ),
-                TextFormField(
+                    },
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  TextFormField(
                     autovalidateMode: AutovalidateMode.onUserInteraction,
+                    keyboardType: TextInputType.number,
                     decoration: InputDecoration(
-                        labelText: "Enter Age of beneficiary",
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10))),
+                      labelText: "Age of Beneficiary",
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
                     validator: (value) {
-                      if (value == null || value.isEmpty) {
+                      if (value!.isEmpty) {
                         return "Please enter a value";
                       }
-
                       int? age = int.tryParse(value);
                       if (age != null) {
                         if (age < 0 || age > 120) {
                           return "Please enter a valid age between 0 and 120";
                         }
-
                         return null;
                       }
-                    }),
-                SizedBox(
-                  height: 20,
-                ),
-                TextFormField(
-                    keyboardType: TextInputType.number,
+                      return "Please enter a valid age";
+                    },
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  TextFormField(
+                    keyboardType: TextInputType.phone,
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
                     decoration: InputDecoration(
-                      labelText: "Enter Caretaker's Phone Number",
+                      labelText: "Caretaker's Phone Number (+91)",
                       border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10)),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
                     ),
                     validator: (value) {
                       if (value!.isEmpty) {
-                        return "enter something";
+                        return "Please enter a valid number";
                       }
                       if (value.length != 10) {
-                        return "enter 10 DIGITS";
+                        return "Please enter a 10-digit number";
                       }
                       return null;
-                    }),
-                SizedBox(
-                  height: 20,
-                ),
-                TextFormField(
-                    keyboardType: TextInputType.number,
+                    },
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  TextFormField(
+                    keyboardType: TextInputType.phone,
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
                     decoration: InputDecoration(
-                      labelText: "Enter Neighbour's Phone Number",
+                      labelText: "Neighbour's Phone Number (+91)",
                       border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10)),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
                     ),
                     validator: (value) {
                       if (value!.isEmpty) {
-                        return "enter something";
+                        return "Please enter a valid number";
                       }
                       if (value.length != 10) {
-                        return "enter 10 DIGITS";
+                        return "Please enter a 10-digit number";
                       }
                       return null;
-                    }),
-                SizedBox(
-                  height: 20,
-                ),
-                Container(
-                    height: 50,
-                    width: double.infinity,
-                    child: ElevatedButton(
-                        onPressed: _submitform, child: Text("submit"))),
-              ],
+                    },
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  ElevatedButton(
+                    onPressed: _submitform,
+                    child: Text(
+                      "Submit",
+                      style: TextStyle(fontSize: 18),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                ],
+              ),
             ),
           ),
         ),
