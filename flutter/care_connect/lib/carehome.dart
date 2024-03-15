@@ -1,3 +1,4 @@
+import 'package:add/form.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -56,8 +57,8 @@ class HomePage extends StatelessWidget {
               ),
               const SizedBox(height: 20.0),
               ElevatedButton(
-                onPressed: () {
-                  // Handle add member action
+                onPressed: (){
+                  Navigator.push(context, MaterialPageRoute(builder:(context)=>MyApp2()));                
                 },
                 style: ElevatedButton.styleFrom(
                   elevation: 3,
@@ -85,3 +86,4 @@ class HomePage extends StatelessWidget {
     );
   }
 }
+
