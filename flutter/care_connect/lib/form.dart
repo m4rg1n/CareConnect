@@ -1,23 +1,26 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(MyApp2());
 }
 
-class MyApp extends StatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
+class MyApp2 extends StatefulWidget {
+  const MyApp2({Key? key}) : super(key: key);
 
   @override
-  State<MyApp> createState() => _MyAppState();
+  State<MyApp2> createState() => _MyAppState();
 }
 
-class _MyAppState extends State<MyApp> {
+class _MyAppState extends State<MyApp2> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   void _submitform() {
     if (_formKey.currentState!.validate()) {
       ScaffoldMessenger.of(_formKey.currentContext!)
           .showSnackBar(const SnackBar(content: Text("Success")));
+Navigator.pop(context);
+
+
     }
   }
 
