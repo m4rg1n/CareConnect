@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+// ignore: unused_import
 import 'package:slide_to_act/slide_to_act.dart';
 
 class Beneficiary extends StatefulWidget {
