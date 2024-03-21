@@ -1,5 +1,9 @@
+// ignore_for_file: prefer_const_literals_to_create_immutables
+
 import 'package:flutter/material.dart';
-import 'form.dart'; 
+import 'form.dart';
+import 'benef.dart';
+
 
 class HomePage extends StatelessWidget {
   @override
@@ -17,9 +21,10 @@ class HomePage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               ElevatedButton(
-                onPressed: () {
-                 
-                },
+                onPressed: () {Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => benef()),
+                  );},
                 style: ElevatedButton.styleFrom(
                   elevation: 3,
                   backgroundColor: Colors.white,
@@ -44,10 +49,11 @@ class HomePage extends StatelessWidget {
               const SizedBox(height: 20.0),
               ElevatedButton(
                 onPressed: () {
- Navigator.push(
+                  Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => FormPage()),
-                  );                },
+                  );
+                },
                 style: ElevatedButton.styleFrom(
                   elevation: 3,
                   backgroundColor: Colors.white,
