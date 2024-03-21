@@ -56,6 +56,13 @@ class benef extends StatelessWidget {
                 ),
                 subtitle: Text("1234567890", style: TextStyle(fontSize: 18)),
               ),
+              ListTile(
+                title: Text(
+                  "Last Known Activity",
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+                subtitle: Text("Dead", style: TextStyle(fontSize: 18)),
+              ),
             ],
           ),
         ),
