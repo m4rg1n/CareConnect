@@ -1,3 +1,6 @@
+// ignore_for_file: prefer_const_constructors
+
+import 'package:app/login2.dart';
 import 'package:flutter/material.dart';
 import 'home.dart';
 
@@ -34,7 +37,18 @@ class Signin extends StatelessWidget {
                 Icons.account_circle_rounded,
                 size: 100,
               ),
+
               SizedBox(
+                height: 45,
+              ),
+                              Text(
+                    'Caretaker Log-in',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 28,
+                    ),
+                  ),
+                   SizedBox(
                 height: 45,
               ),
               Padding(
@@ -98,6 +112,34 @@ class Signin extends StatelessWidget {
                 ),
                 child: Text(
                   'SIGN IN',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 25,
+              ),
+
+
+
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Signin2()),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  padding: EdgeInsets.all(15),
+                  backgroundColor: const Color.fromARGB(255, 246, 246, 246),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                ),
+                child: Text(
+                  'BENEFICIARY LOGIN',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 18,
