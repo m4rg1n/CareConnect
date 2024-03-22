@@ -1,80 +1,28 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables
-
 import 'package:flutter/material.dart';
-import 'form.dart';
 import 'benef.dart';
+import 'form.dart'; 
 
+class BenefDetailsPage extends StatelessWidget {
+  final Beneficiary beneficiary;
 
-class HomePage extends StatelessWidget {
+  const BenefDetailsPage({Key? key, required this.beneficiary}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Members'),
-        backgroundColor: Colors.green,
+        title: Text('Beneficiary Details'),
       ),
-      body: Container(
-        color: Colors.white,
-        child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              ElevatedButton(
-                onPressed: () {Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => benef()),
-                  );},
-                style: ElevatedButton.styleFrom(
-                  elevation: 3,
-                  backgroundColor: Colors.white,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Icon(Icons.people, size: 48.0),
-                      Text(
-                        'Beneficiary 1',
-                        style: TextStyle(fontSize: 18.0),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              const SizedBox(height: 20.0),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => FormPage()),
-                  );
-                },
-                style: ElevatedButton.styleFrom(
-                  elevation: 3,
-                  backgroundColor: Colors.white,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(Icons.add_circle),
-                    SizedBox(width: 10.0),
-                    Text(
-                      'Add Member',
-                      style: TextStyle(fontSize: 18.0),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('Name: ${beneficiary.name}'),
+            Text('Age: ${beneficiary.age}'),
+            Text('Caretaker\'s Phone Number: ${beneficiary.caretakerPhone}'),
+            Text('Neighbour\'s Phone Number: ${beneficiary.neighbourPhone}'),
+            // Add more details as needed
+          ],
         ),
       ),
     );
