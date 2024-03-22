@@ -1,14 +1,43 @@
 import 'package:flutter/material.dart';
+import 'benefdetails.dart';
+
+// Define the Beneficiary class
+class Beneficiary {
+  final String name;
+  final int age;
+  final String caretakerPhone;
+  final String neighbourPhone;
+
+  Beneficiary({
+    required this.name,
+    required this.age,
+    required this.caretakerPhone,
+    required this.neighbourPhone,
+  });
+}
 
 class FormPage extends StatelessWidget {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
+  String? _name;
+  int? _age;
+  String? _caretakerPhone;
+  String? _neighbourPhone;
+
   void _submitForm(BuildContext context) {
     if (_formKey.currentState!.validate()) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Success")),
+      _formKey.currentState!.save(); // Save the form fields
+
+      // Create a new Beneficiary object with the form values
+      Beneficiary newBeneficiary = Beneficiary(
+        name: _name!,
+        age: _age!,
+        caretakerPhone: _caretakerPhone!,
+        neighbourPhone: _neighbourPhone!,
       );
-      Navigator.pop(context);
+
+      // Navigate back to the homepage and pass the new beneficiary details
+      Navigator.pop(context, newBeneficiary);
     }
   }
 
@@ -39,6 +68,7 @@ class FormPage extends StatelessWidget {
                 SizedBox(
                   height: 20,
                 ),
+                // Text form field for name
                 TextFormField(
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   decoration: InputDecoration(
@@ -53,10 +83,12 @@ class FormPage extends StatelessWidget {
                     }
                     return null;
                   },
+                  onSaved: (value) => _name = value!,
                 ),
                 SizedBox(
                   height: 20,
                 ),
+                // Text form field for age
                 TextFormField(
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   keyboardType: TextInputType.number,
@@ -79,10 +111,12 @@ class FormPage extends StatelessWidget {
                     }
                     return "Please enter a valid age";
                   },
+                  onSaved: (value) => _age = int.parse(value!),
                 ),
                 SizedBox(
                   height: 20,
                 ),
+                // Text form field for caretaker's phone number
                 TextFormField(
                   keyboardType: TextInputType.phone,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -101,10 +135,12 @@ class FormPage extends StatelessWidget {
                     }
                     return null;
                   },
+                  onSaved: (value) => _caretakerPhone = value!,
                 ),
                 SizedBox(
                   height: 20,
                 ),
+                // Text form field for neighbour's phone number
                 TextFormField(
                   keyboardType: TextInputType.phone,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -123,6 +159,7 @@ class FormPage extends StatelessWidget {
                     }
                     return null;
                   },
+                  onSaved: (value) => _neighbourPhone = value!,
                 ),
                 SizedBox(
                   height: 20,
